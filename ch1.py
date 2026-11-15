@@ -103,21 +103,6 @@ class SDK(ABC):
         pass
 
 
-class FakeSDK(SDK):
-    def __init__(self, stock):
-        self.stock = dict(stock)
-        self.moves = []
-        self.opened = False
-
-    def count_banknotes(self, banknote):
-        return self.stock.get(banknote, 0)
-
-    def move_banknote_to_dispenser(self, banknote, count):
-        assert count <= self.stock[banknote], "нельзя выдать больше, чем есть"
-        self.moves.append((banknote, count))
-
-    def open_dispenser(self):
-        self.opened = True
 
 
 
